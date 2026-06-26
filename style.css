@@ -1,45 +1,38 @@
 #app {
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    gap: 24px;
+    padding: 24px;
+    font-family: sans-serif;
 }
 
 #music-player {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 280px;
+    gap: 10px;
+    width: 260px;
 }
 
 #song-image {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border-radius: 12px;
+    background: #eee;
+}
+
+#music-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #sidebar {
-    width: 280px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-
-    gap: 10px;
-}
-
-#playlist-tabs {
+    width: 300px;
     display: flex;
-    gap: 8px;
-}
-
-.tab-button {
-    flex: 1;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.tab-button.active {
-    background-color: #333;
-    color: white;
+    flex-direction: column;
+    gap: 12px;
 }
 
 #song-list {
@@ -48,20 +41,63 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .song-item {
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
     cursor: pointer;
+    border-radius: 8px;
     background: #f0f0f0;
 }
 
-.song-item:hover {
-    background: #ddd;
-}
+.song-item:hover { background: #e0e0e0; }
 
 .song-item.active {
-    background: #333;
+    background: #222;
     color: white;
 }
+
+.song-item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover { color: #e00; background: rgba(255,0,0,0.1); }
+
+.song-item.active .delete-btn { color: #aaa; }
+
+#upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+#upload-area label {
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+}
+
+#upload-area label:hover { color: #222; }
+
+#file-input { display: none; }
