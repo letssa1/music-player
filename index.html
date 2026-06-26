@@ -9,13 +9,13 @@
 <body>
     <div id="app">
 
-
+        <!-- Player -->
         <div id="music-player">
             <img id="song-image" src="" alt="Album Cover">
-            <div id="song-name">name</div>
-            <div id="song-artist">artist</div>
+            <div id="song-name">No song selected</div>
+            <div id="song-artist">—</div>
             <label for="song-slider">Song progress</label>
-            <input id="song-slider" type="range" aria-label="Song progress">
+            <input id="song-slider" type="range" value="0" aria-label="Song progress">
 
             <div id="music-buttons">
                 <button id="shuffle-button">Shuffle</button>
@@ -26,20 +26,31 @@
             </div>
         </div>
 
-        
+        <!-- Sidebar -->
         <div id="sidebar">
 
-          
-            <div id="playlist-tabs">
-                <button class="tab-button active" data-playlist="jazz">Jazz</button>
-                <button class="tab-button" data-playlist="classical">Classical</button>
+            <div id="playlist-header">
+                <div id="playlist-tabs"></div>
+                <button id="new-playlist-btn">＋</button>
             </div>
 
-           
+            <!-- New playlist form (hidden by default) -->
+            <div id="new-playlist-form" class="hidden">
+                <input id="playlist-name-input" type="text" placeholder="Playlist name...">
+                <div id="form-buttons">
+                    <button id="confirm-playlist-btn">Create</button>
+                    <button id="cancel-playlist-btn">Cancel</button>
+                </div>
+            </div>
+
             <ul id="song-list"></ul>
 
-        </div>
+            <div id="upload-area">
+                <label for="file-input">＋ Add MP3 to playlist</label>
+                <input id="file-input" type="file" accept=".mp3,audio/*" multiple>
+            </div>
 
+        </div>
     </div>
 
     <script src="script.js"></script>
