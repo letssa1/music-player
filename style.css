@@ -1,8 +1,80 @@
+/* ── Default theme ── */
+:root {
+    --bg: #ffffff;
+    --surface: #f0f0f0;
+    --surface-hover: #e0e0e0;
+    --active: #222222;
+    --active-text: #ffffff;
+    --text: #222222;
+    --text-muted: #999999;
+    --border: #cccccc;
+    --upload-border: #cccccc;
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --surface: #2a2a2a;
+    --surface-hover: #333333;
+    --active: #ffffff;
+    --active-text: #1a1a1a;
+    --text: #eeeeee;
+    --text-muted: #777777;
+    --border: #444444;
+    --upload-border: #444444;
+}
+
+/* ── Ocean theme ── */
+[data-theme="ocean"] {
+    --bg: #0d1b2a;
+    --surface: #1b2f45;
+    --surface-hover: #243d57;
+    --active: #4fc3f7;
+    --active-text: #0d1b2a;
+    --text: #e0f0ff;
+    --text-muted: #5a8a9f;
+    --border: #2a4a62;
+    --upload-border: #2a4a62;
+}
+
+/* ── Rose theme ── */
+[data-theme="rose"] {
+    --bg: #fff0f3;
+    --surface: #ffd6e0;
+    --surface-hover: #ffbdd0;
+    --active: #c9184a;
+    --active-text: #ffffff;
+    --text: #4a0010;
+    --text-muted: #a0556a;
+    --border: #ffb3c6;
+    --upload-border: #ffb3c6;
+}
+
+/* ── Forest theme ── */
+[data-theme="forest"] {
+    --bg: #0f1f0f;
+    --surface: #1a2f1a;
+    --surface-hover: #243f24;
+    --active: #74c365;
+    --active-text: #0f1f0f;
+    --text: #d4edcc;
+    --text-muted: #5a7a54;
+    --border: #2a4a2a;
+    --upload-border: #2a4a2a;
+}
+
+/* ── Layout ── */
+body {
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    font-family: sans-serif;
+}
+
 #app {
     display: flex;
     gap: 24px;
     padding: 24px;
-    font-family: sans-serif;
 }
 
 #music-player {
@@ -18,7 +90,25 @@
     height: 200px;
     object-fit: cover;
     border-radius: 12px;
-    background: #eee;
+    background: var(--surface);
+}
+
+#song-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text);
+    text-align: center;
+}
+
+#song-artist {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+#song-slider {
+    width: 100%;
+    accent-color: var(--active);
 }
 
 #music-buttons {
@@ -28,6 +118,21 @@
     justify-content: center;
 }
 
+#music-buttons button {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#music-buttons button:hover {
+    background: var(--surface-hover);
+}
+
+/* ── Sidebar ── */
 #sidebar {
     width: 300px;
     display: flex;
@@ -35,6 +140,130 @@
     gap: 12px;
 }
 
+#playlist-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#playlist-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+}
+
+.tab-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.tab-button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.tab-button.active {
+    background: var(--active);
+    color: var(--active-text);
+}
+
+.tab-delete {
+    padding: 4px 7px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.tab-delete:hover {
+    color: #e00;
+    background: rgba(255,0,0,0.1);
+}
+
+.tab-button.active + .tab-delete {
+    color: var(--active-text);
+    opacity: 0.6;
+}
+
+#new-playlist-btn {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    background: none;
+    font-size: 16px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+#new-playlist-btn:hover {
+    border-color: var(--text);
+    color: var(--text);
+}
+
+#new-playlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+#new-playlist-form.hidden {
+    display: none;
+}
+
+#playlist-name-input {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background: var(--bg);
+    color: var(--text);
+}
+
+#playlist-name-input:focus {
+    border-color: var(--active);
+}
+
+#form-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+#confirm-playlist-btn {
+    flex: 1;
+    padding: 8px;
+    background: var(--active);
+    color: var(--active-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#cancel-playlist-btn {
+    flex: 1;
+    padding: 8px;
+    background: var(--surface-hover);
+    color: var(--text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ── Song list ── */
 #song-list {
     list-style: none;
     padding: 0;
@@ -53,14 +282,15 @@
     padding: 10px 12px;
     cursor: pointer;
     border-radius: 8px;
-    background: #f0f0f0;
+    background: var(--surface);
+    color: var(--text);
 }
 
-.song-item:hover { background: #e0e0e0; }
+.song-item:hover { background: var(--surface-hover); }
 
 .song-item.active {
-    background: #222;
-    color: white;
+    background: var(--active);
+    color: var(--active-text);
 }
 
 .song-item-title {
@@ -74,7 +304,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #999;
+    color: var(--text-muted);
     font-size: 12px;
     padding: 2px 6px;
     border-radius: 4px;
@@ -83,10 +313,44 @@
 
 .delete-btn:hover { color: #e00; background: rgba(255,0,0,0.1); }
 
-.song-item.active .delete-btn { color: #aaa; }
+.song-item.active .delete-btn {
+    color: var(--active-text);
+    opacity: 0.6;
+}
 
+/* ── Theme picker ── */
+#theme-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+#theme-options {
+    display: flex;
+    gap: 6px;
+}
+
+.theme-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 16px;
+    background: none;
+    padding: 0;
+    line-height: 1;
+}
+
+.theme-btn.active {
+    border-color: var(--active);
+}
+
+/* ── Upload area ── */
 #upload-area {
-    border: 2px dashed #ccc;
+    border: 2px dashed var(--upload-border);
     border-radius: 8px;
     padding: 16px;
     text-align: center;
@@ -94,10 +358,10 @@
 
 #upload-area label {
     cursor: pointer;
-    color: #555;
+    color: var(--text-muted);
     font-size: 14px;
 }
 
-#upload-area label:hover { color: #222; }
+#upload-area label:hover { color: var(--text); }
 
 #file-input { display: none; }
